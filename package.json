@@ -2,11 +2,14 @@
   "name": "frontend-project-lvl1",
   "version": "1.0.0",
   "description": "Project #1",
+  "type": "module",
   "bin": {
     "brain-games": "bin/brain-games.js"
   },
+  "files": [
+    "dist"
+  ],
   "main": "src/index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/pvl-grdv/frontend-project-lvl1/issues"
   },
-  "homepage": "https://github.com/pvl-grdv/frontend-project-lvl1#readme"
+  "homepage": "https://github.com/pvl-grdv/frontend-project-lvl1#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
