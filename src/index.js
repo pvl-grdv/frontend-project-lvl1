@@ -1,35 +1,40 @@
 import readlineSync from 'readline-sync';
 
-let userName;
+export const asker = (question) => readlineSync.question(question);
+
 export const userGreeting = () => {
   const greeting = 'Welcome to the Brain Games!';
   console.log(greeting);
-  userName = readlineSync.question('May I have your name? ');
+  const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
+  return userName;
 };
 
-export const brainEven = () => {
-  const getRandomInt = (max) => {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
-  userGreeting();
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  let rightAnswersCount = 0;
-  for (let i = 1; i <= 3; i += 1) {
-    const randomNumber = getRandomInt(100);
-    const correctAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
+export const getRandomIntInclusive = (min, max) => {
+  const minCeil = Math.ceil(min);
+  const maxFloor = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloor - minCeil + 1)) + minCeil;
+};
 
-    const userAnswer = readlineSync.question(`Question: ${randomNumber}\nYour answer: `);
-    if (userAnswer === correctAnswer) {
-      console.log('Correct!')
-      rightAnswersCount += 1;
-    }
-    else {
-      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\nLet's try again, ${userName}`);
-      break;
-    }
-  };
-  if (rightAnswersCount === 3) {
-    console.log(`Congratulations, ${userName}!`);
+export const answerIsCorrect = () => {
+  console.log('Correct!');
+};
+
+export const answerIsUncorrect = (userAnswer, correctAnswer, userName) => {
+  console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\nLet's try again, ${userName}`);
+};
+
+export const congratulations = (userName) => {
+  console.log(`Congratulations, ${userName}!`);
+};
+
+export const gameRules = (gameName) => {
+  switch (gameName) {
+    case 'calc':
+      return console.log('What is the result of the expression?');
+    case 'even':
+      return console.log('Answer "yes" if the number is even, otherwise answer "no".');
+    default:
+      return console.log('There is no game rules.');
   }
-}
+};
