@@ -10,8 +10,10 @@ Even or not game demo
 
 
 Calculator game demo
+
 [![asciicast](https://asciinema.org/a/Sgat2yEklTtecjc5RkmtVzC0B.svg)](https://asciinema.org/a/Sgat2yEklTtecjc5RkmtVzC0B)
 
 
 Greatest common divisor demo
+
 [![asciicast](https://asciinema.org/a/f61kZeUQvs41DmFu5fHBzbExS.svg)](https://asciinema.org/a/f61kZeUQvs41DmFu5fHBzbExS)
