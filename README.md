@@ -6,3 +6,6 @@
 
 Игра: "Проверка на чётность"
 [![asciicast](https://asciinema.org/a/xs6HjCbprNtWhmp1czRSUQ0o6.svg)](https://asciinema.org/a/xs6HjCbprNtWhmp1czRSUQ0o6)
+
+Игра: "Калькулятор"
+[![asciicast](https://asciinema.org/a/Sgat2yEklTtecjc5RkmtVzC0B.svg)](https://asciinema.org/a/Sgat2yEklTtecjc5RkmtVzC0B)
