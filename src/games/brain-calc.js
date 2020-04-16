@@ -14,7 +14,7 @@ export default () => {
     const questionExpression = `${getRandomIntInclusive(0, 100)} ${randomOperator()} ${getRandomIntInclusive(0, 100)}`;
     const correctAnswer = eval(questionExpression);
     const userAnswer = asker(`Question: ${questionExpression}\nYour answer: `);
-    if (userAnswer == correctAnswer) {
+    if (Number(userAnswer) === correctAnswer) {
       answerIsCorrect();
       rightAnswersCount += 1;
     } else {
