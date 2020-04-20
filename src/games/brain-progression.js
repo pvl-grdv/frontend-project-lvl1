@@ -1,4 +1,7 @@
-import { gameRules, userGreeting, asker, getRandomIntInclusive, answerIsCorrect, answerIsUncorrect, congratulations } from '../index.js';
+import {
+  gameRules, userGreeting, asker, getRandomIntInclusive,
+  answerIsCorrect, answerIsUncorrect, congratulations,
+} from '../index.js';
 
 const progressionMaker = () => {
   const progressionArr = [];
@@ -11,9 +14,10 @@ const progressionMaker = () => {
   return progressionArr;
 };
 
-const sensoredArr = (array, censoredPosition) => {
-  array[censoredPosition] = '..';
-  return array;
+const makeSensoredArr = (array, censoredPosition) => {
+  const censoredArray = [...array];
+  censoredArray[censoredPosition] = '..';
+  return censoredArray;
 };
 
 export default () => {
@@ -24,7 +28,7 @@ export default () => {
     const fullArray = progressionMaker();
     const positionOfSecret = getRandomIntInclusive(0, fullArray.length - 1);
     const correctAnswer = fullArray[positionOfSecret];
-    const question = sensoredArr(fullArray, positionOfSecret).join(' ');
+    const question = makeSensoredArr(fullArray, positionOfSecret).join(' ');
     const userAnswer = asker(`Question: ${question}\nYour answer: `);
     if (Number(userAnswer) === correctAnswer) {
       answerIsCorrect();
