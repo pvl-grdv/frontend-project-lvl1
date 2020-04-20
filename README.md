@@ -14,6 +14,10 @@ Calculator game demo
 [![asciicast](https://asciinema.org/a/Sgat2yEklTtecjc5RkmtVzC0B.svg)](https://asciinema.org/a/Sgat2yEklTtecjc5RkmtVzC0B)
 
 
-Greatest common divisor demo
+Greatest common divisor game demo
 
 [![asciicast](https://asciinema.org/a/f61kZeUQvs41DmFu5fHBzbExS.svg)](https://asciinema.org/a/f61kZeUQvs41DmFu5fHBzbExS)
+
+Arithmetic progression game demo
+
+[![asciicast](https://asciinema.org/a/tUp5UblEhX2DncVlTaiXolhnB.svg)](https://asciinema.org/a/tUp5UblEhX2DncVlTaiXolhnB)
