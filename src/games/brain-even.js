@@ -1,4 +1,7 @@
-import { gameRules, userGreeting, asker, getRandomIntInclusive, answerIsCorrect, answerIsUncorrect, congratulations } from '../index.js';
+import {
+  gameRules, userGreeting, asker, getRandomIntInclusive,
+  answerIsCorrect, answerIsUncorrect, congratulations,
+} from '../index.js';
 
 export default () => {
   const userName = userGreeting();
