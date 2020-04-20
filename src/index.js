@@ -36,6 +36,8 @@ export const gameRules = (gameName) => {
       return console.log('Answer "yes" if the number is even, otherwise answer "no".');
     case 'gcd':
       return console.log('Find the greatest common divisor of given numbers.');
+    case 'progression':
+      return console.log('What number is missing in the progression?');
     default:
       return console.log('There is no game rules.');
   }
