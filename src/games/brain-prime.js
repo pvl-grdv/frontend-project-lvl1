@@ -23,7 +23,7 @@ export default () => {
     const randomNumber = getRandomIntInclusive(0, 100);
     const correctAnswer = isPrime(randomNumber) ? 'yes' : 'no';
     const userAnswer = asker(`Question: ${randomNumber}\nYour answer: `);
-    if (Number(userAnswer) === correctAnswer) {
+    if (userAnswer === correctAnswer) {
       answerIsCorrect();
       rightAnswersCount += 1;
     } else {
