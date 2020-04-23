@@ -6,8 +6,7 @@
 
 Even or not game demo
 
-[![asciicast](https://asciinema.org/a/xs6HjCbprNtWhmp1czRSUQ0o6.svg)](https://asciinema.org/a/xs6HjCbprNtWhmp1czRSUQ0o6)
-
+[![asciicast](https://asciinema.org/a/3bzohWzzTjQ3mt9AzsZSIRbcj.svg)](https://asciinema.org/a/3bzohWzzTjQ3mt9AzsZSIRbcj)
 
 Calculator game demo
 
