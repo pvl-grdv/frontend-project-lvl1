@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import { userGreeting } from '../src/index.js';
+import runUserGreeting from '../src/index.js';
 
-userGreeting();
+runUserGreeting();
