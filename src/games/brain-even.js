@@ -1,25 +1,20 @@
-import {
-  gameRules, userGreeting, asker, getRandomIntInclusive,
-  answerIsCorrect, answerIsUncorrect, congratulations,
-} from '../index.js';
+import { runGame, roundCount } from '../index.js';
+import { getRandomNumber } from '../utils.js';
+// game rules
+const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
+// make questionExpressionArray and correctAnswerArray
+const questionExpressionArray = [];
+const correctAnswerArray = [];
 
+for (let i = 0; i <= roundCount; i += 1) {
+  const randomNumber = getRandomNumber(0, 1000);
+  const questionExpression = randomNumber;
+  const correctAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
+  questionExpressionArray.push(questionExpression);
+  correctAnswerArray.push(correctAnswer);
+}
+
+// run game
 export default () => {
-  const userName = userGreeting();
-  gameRules('even');
-  let rightAnswersCount = 0;
-  for (let i = 1; i <= 3; i += 1) {
-    const randomNumber = getRandomIntInclusive(0, 1000);
-    const correctAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
-    const userAnswer = asker(`Question: ${randomNumber}\nYour answer: `);
-    if (userAnswer === correctAnswer) {
-      answerIsCorrect();
-      rightAnswersCount += 1;
-    } else {
-      answerIsUncorrect(userAnswer, correctAnswer, userName);
-      break;
-    }
-  }
-  if (rightAnswersCount === 3) {
-    congratulations(userName);
-  }
+  runGame(correctAnswerArray, questionExpressionArray, rules);
 };

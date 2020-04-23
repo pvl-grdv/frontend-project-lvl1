@@ -1,44 +1,37 @@
-import {
-  gameRules, userGreeting, asker, getRandomIntInclusive,
-  answerIsCorrect, answerIsUncorrect, congratulations,
-} from '../index.js';
+import { runGame, roundCount } from '../index.js';
+import { getRandomNumber } from '../utils.js';
+// game rules
+const rules = 'What number is missing in the progression?';
+// make questionExpressionArray and correctAnswerArray
+const questionExpressionArray = [];
+const correctAnswerArray = [];
 
-const progressionMaker = () => {
-  const progressionArr = [];
-  const firstNumber = getRandomIntInclusive(0, 100);
-  const n = getRandomIntInclusive(0, 10);
-  progressionArr[0] = firstNumber;
-  for (let number = 1; number < 10; number += 1) {
-    progressionArr[number] = progressionArr[number - 1] + n;
-  }
-  return progressionArr;
-};
-
-const makeSensoredArr = (array, censoredPosition) => {
-  const censoredArray = [...array];
-  censoredArray[censoredPosition] = '..';
-  return censoredArray;
-};
-
-export default () => {
-  const userName = userGreeting();
-  gameRules('progression');
-  let rightAnswersCount = 0;
-  for (let i = 1; i <= 3; i += 1) {
-    const fullArray = progressionMaker();
-    const positionOfSecret = getRandomIntInclusive(0, fullArray.length - 1);
-    const correctAnswer = fullArray[positionOfSecret];
-    const question = makeSensoredArr(fullArray, positionOfSecret).join(' ');
-    const userAnswer = asker(`Question: ${question}\nYour answer: `);
-    if (Number(userAnswer) === correctAnswer) {
-      answerIsCorrect();
-      rightAnswersCount += 1;
-    } else {
-      answerIsUncorrect(userAnswer, correctAnswer, userName);
-      break;
+for (let i = 0; i <= roundCount; i += 1) {
+  const progressionMaker = () => {
+    const progressionArr = [];
+    const firstNumber = getRandomNumber(0, 100);
+    const difference = getRandomNumber(0, 10);
+    progressionArr[0] = firstNumber;
+    for (let number = 1; number < 10; number += 1) {
+      progressionArr[number] = progressionArr[number - 1] + difference;
     }
-  }
-  if (rightAnswersCount === 3) {
-    congratulations(userName);
-  }
+    return progressionArr;
+  };
+  const generateQuestion = (array, censoredPosition) => {
+    const censoredArray = [...array];
+    censoredArray[censoredPosition] = '..';
+    const questionString = censoredArray.join(' ');
+    return questionString;
+  };
+  const fullArray = progressionMaker();
+  const positionOfSecret = getRandomNumber(0, fullArray.length - 1);
+  const questionExpression = generateQuestion(fullArray, positionOfSecret);
+  const correctAnswer = String(fullArray[positionOfSecret]);
+  questionExpressionArray.push(questionExpression);
+  correctAnswerArray.push(correctAnswer);
+}
+
+// run game
+export default () => {
+  runGame(correctAnswerArray, questionExpressionArray, rules);
 };

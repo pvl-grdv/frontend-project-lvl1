@@ -1,37 +1,31 @@
-import {
-  gameRules, userGreeting, asker, getRandomIntInclusive,
-  answerIsCorrect, answerIsUncorrect, congratulations,
-} from '../index.js';
+import { runGame, roundCount } from '../index.js';
+import { getRandomNumber } from '../utils.js';
+// game rules
+const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+// make questionExpressionArray and correctAnswerArray
+const questionExpressionArray = [];
+const correctAnswerArray = [];
 
-const isPrime = (number) => {
-  if (number <= 1) {
-    return false;
-  }
-  for (let divider = 2; divider < number; divider += 1) {
-    if (number % divider === 0) {
+for (let i = 0; i <= roundCount; i += 1) {
+  const isPrime = (number) => {
+    if (number <= 1) {
       return false;
     }
-  }
-  return true;
-};
-
-export default () => {
-  const userName = userGreeting();
-  gameRules('prime');
-  let rightAnswersCount = 0;
-  for (let i = 1; i <= 3; i += 1) {
-    const randomNumber = getRandomIntInclusive(0, 100);
-    const correctAnswer = isPrime(randomNumber) ? 'yes' : 'no';
-    const userAnswer = asker(`Question: ${randomNumber}\nYour answer: `);
-    if (userAnswer === correctAnswer) {
-      answerIsCorrect();
-      rightAnswersCount += 1;
-    } else {
-      answerIsUncorrect(userAnswer, correctAnswer, userName);
-      break;
+    for (let divider = 2; divider < number; divider += 1) {
+      if (number % divider === 0) {
+        return false;
+      }
     }
-  }
-  if (rightAnswersCount === 3) {
-    congratulations(userName);
-  }
+    return true;
+  };
+  const randomNumber = getRandomNumber(0, 100);
+  const questionExpression = `${randomNumber}`;
+  const correctAnswer = isPrime(randomNumber) ? 'yes' : 'no';
+  questionExpressionArray.push(questionExpression);
+  correctAnswerArray.push(correctAnswer);
+}
+
+// run game
+export default () => {
+  runGame(correctAnswerArray, questionExpressionArray, rules);
 };
