@@ -11,23 +11,14 @@
     "brain-progression": "bin/brain-progression.js",
     "brain-prime": "bin/brain-prime.js"
   },
-  "files": [
-    "dist"
-  ],
   "engines": {
     "node": ">=13"
   },
   "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pvl-grdv/frontend-project-lvl1.git"
   },
-  "keywords": [
-    "Hexlet"
-  ],
   "author": "P.G.",
   "license": "ISC",
   "bugs": {
