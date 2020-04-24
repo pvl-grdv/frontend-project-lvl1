@@ -1,41 +1,26 @@
 import readlineSync from 'readline-sync';
 
-export const roundCount = 3;
-// number of rounds is used for array sizing of questionExpression and correctAnswer in games.
-
-const askQuestion = (question) => readlineSync.question(question);
-
-const answerIsCorrect = () => {
-  console.log('Correct!');
-};
-
-const answerIsUncorrect = (userAnswer, correctAnswer, userName) => {
-  console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\nLet's try again, ${userName}`);
-};
+export const roundsCount = 3;
 
 // runGame engine
-export const runGame = (correctAnswerArray, questionExpressionArray, rules) => {
+export const runGame = (questionsAnswers, rule) => {
   // Greeting
-  const greeting = 'Welcome to the Brain Games!';
-  console.log(greeting);
+  console.log('Welcome to the Brain Games!');
   // Ask name
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
   // Show rules
-  console.log(rules);
+  console.log(rule);
   // Start game
-  let rightAnswersCount = 0;
-  for (let i = 0; i < roundCount; i += 1) {
-    const userAnswer = askQuestion(`Question: ${questionExpressionArray[i]}\nYour answer: `);
-    if (userAnswer === correctAnswerArray[i]) {
-      answerIsCorrect();
-      rightAnswersCount += 1;
+  for (let i = 0; i < roundsCount; i += 1) {
+    const userAnswer = readlineSync.question(`Question: ${questionsAnswers[i][0]}\nYour answer: `);
+    if (userAnswer === questionsAnswers[i][1]) {
+      console.log('Correct!');
     } else {
-      answerIsUncorrect(userAnswer, correctAnswerArray[i], userName);
+      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${questionsAnswers[i][1]}".`);
+      console.log(`Let's try again, ${userName}`);
       return;
     }
   }
-  if (rightAnswersCount === 3) {
-    console.log(`Congratulations, ${userName}!`);
-  }
+  console.log(`Congratulations, ${userName}!`);
 };
