@@ -1,35 +1,38 @@
 import { runGame, roundsCount } from '../index.js';
 import { getRandomNumber } from '../utils.js';
 
-const rule = 'What number is missing in the progression?';
-const generateQuestionsAndAnswers = () => {
-  const questionsAnswers = [];
-
-  for (let i = 0; i <= roundsCount; i += 1) {
-    const progressionMake = () => {
-      const progressions = [];
-      const firstNumber = getRandomNumber(0, 100);
-      const difference = getRandomNumber(0, 10);
-      for (let number = 0; number < 10; number += 1) {
-        progressions[number] = firstNumber + (number - 1) * difference;
-      }
-      return progressions;
-    };
-    const generateQuestion = (array, censoredPosition) => {
-      const censoredArray = [...array];
-      censoredArray[censoredPosition] = '..';
-      const question = censoredArray.join(' ');
-      return question;
-    };
-    const fullArray = progressionMake();
-    const positionOfSecret = getRandomNumber(0, fullArray.length - 1);
-    const question = generateQuestion(fullArray, positionOfSecret);
-    const correctAnswer = String(fullArray[positionOfSecret]);
-    questionsAnswers.push([question, correctAnswer]);
+const generateProgression = () => {
+  const progression = [];
+  const progressionLength = 10;
+  const firstNumber = getRandomNumber(0, 100);
+  const difference = getRandomNumber(0, 10);
+  for (let i = 0; i < progressionLength; i += 1) {
+    progression[i] = firstNumber + (i - 1) * difference;
   }
-  return questionsAnswers;
+  return progression;
+};
+const rule = 'What number is missing in the progression?';
+
+const generateRound = () => {
+  const round = [];
+  const fullProgression = generateProgression();
+  const hiddenPosition = getRandomNumber(0, fullProgression.length - 1);
+  const censoredProgression = [...fullProgression];
+  censoredProgression[hiddenPosition] = '..';
+  const question = censoredProgression.join(' ');
+  const correctAnswer = String(fullProgression[hiddenPosition]);
+  round.push(question, correctAnswer);
+  return round;
+};
+
+const generateRounds = () => {
+  const rounds = [];
+  for (let i = 0; i <= roundsCount; i += 1) {
+    rounds.push(generateRound());
+  }
+  return rounds;
 };
 
 export default () => {
-  runGame(generateQuestionsAndAnswers(), rule);
+  runGame(generateRounds(), rule);
 };
