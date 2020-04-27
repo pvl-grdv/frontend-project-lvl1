@@ -1,4 +1,4 @@
-import { runGame, roundsCount } from '../index.js';
+import { runGame } from '../index.js';
 import { getRandomNumber } from '../utils.js';
 
 const calculate = (operator, operand1, operand2) => {
@@ -30,15 +30,15 @@ const generateRound = () => {
   return round;
 };
 
-export const generateRounds = () => {
-  const rounds = [];
-  for (let i = 0; i <= roundsCount; i += 1) {
-    const round = generateRound();
-    rounds.push(round);
-  }
-  return rounds;
-};
+// export const generateRounds = () => {
+//   const rounds = [];
+//   for (let i = 0; i <= roundsCount; i += 1) {
+//     const round = generateRound();
+//     rounds.push(round);
+//   }
+//   return rounds;
+// };
 
 export default () => {
-  runGame(generateRounds(), rule);
+  runGame(rule, generateRound());
 };
