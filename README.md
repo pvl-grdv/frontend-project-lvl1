@@ -35,6 +35,9 @@ Prime number game demo
 
 ### How to install
 
+[![asciicast](https://asciinema.org/a/OpNBYs71lX3eRtE10DJZC3Hfe.svg)](https://asciinema.org/a/OpNBYs71lX3eRtE10DJZC3Hfe)
+
+
 1. Clone repo
 2. type *make install*, that will copy dependencies
 3. type *make publish*, that will publish npm package locally
