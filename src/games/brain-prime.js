@@ -15,11 +15,9 @@ const isPrime = (number) => {
 };
 
 const generateRound = () => {
-  const randomNumber = getRandomNumber(1, 100);
-  const question = `${randomNumber}`;
-  const correctAnswer = isPrime(randomNumber) ? 'yes' : 'no';
-  const round = [question, correctAnswer];
-  return round;
+  const question = `${getRandomNumber(1, 100)}`;
+  const correctAnswer = isPrime(question) ? 'yes' : 'no';
+  return [question, correctAnswer];
 };
 
 export default () => {

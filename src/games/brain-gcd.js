@@ -15,8 +15,7 @@ const generateRound = () => {
   const randomNumber2 = getRandomNumber(0, 100);
   const question = `${randomNumber1} ${randomNumber2}`;
   const correctAnswer = String(gcd(randomNumber1, randomNumber2));
-  const round = [question, correctAnswer];
-  return round;
+  return [question, correctAnswer];
 };
 
 export default () => {
