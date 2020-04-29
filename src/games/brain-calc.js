@@ -16,16 +16,15 @@ const calculate = (operator, operand1, operand2) => {
   }
 };
 
-const operations = ['+', '-', '*'];
+const operators = ['+', '-', '*'];
 const rule = 'What is the result of the expression?';
 const generateRound = () => {
-  const operator = operations[getRandomNumber(0, 2)];
+  const operator = operators[getRandomNumber(0, operators.length - 1)];
   const operand1 = getRandomNumber(0, 100);
   const operand2 = getRandomNumber(0, 100);
   const question = `${operand1} ${operator} ${operand2}`;
   const correctAnswer = String(calculate(operator, operand1, operand2));
-  const round = [question, correctAnswer];
-  return round;
+  return [question, correctAnswer];
 };
 
 export default () => {
